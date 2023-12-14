@@ -24,19 +24,14 @@
 // }
 
 import { checkUrl } from "./src/tools/checkUrl";
+import { IRequest, urls } from "./src/tools/urls"
 
-const urls = ['https://api.github.com/orgs/nodejs/repos', 
-'https://api.github.com/users',
-'https://api.github.com/orgs/Netflix/repos',
-'https://api.github.com/orgs/twitter/public_members',
-'https://api.github.com/orgs/twitter/repos'];
-
-const checkUrls = async () => {
+const checkUrls = async (requests: IRequest[]) => {
     await Promise.all(
-        urls.map(async (u) => {
-            await checkUrl(u)
+        requests.map(async (request) => {
+            await checkUrl(request.url, request.config);
         })
     );
 };
 
-checkUrls();
+checkUrls(urls);
