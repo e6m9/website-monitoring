@@ -24,9 +24,9 @@
 // }
 
 import { checkUrl } from "./src/tools/checkUrl";
-import { IRequest, urls } from "./src/tools/urls"
+import { IRequest, requests } from "./src/tools/requests"
 
-const checkUrls = async (requests: IRequest[]) => {
+const checkUrls = async (requests: IRequest[]) : Promise<void> => {
     await Promise.all(
         requests.map(async (request) => {
             await checkUrl(request.url, request.config);
@@ -34,4 +34,4 @@ const checkUrls = async (requests: IRequest[]) => {
     );
 };
 
-checkUrls(urls);
+checkUrls(requests);
