@@ -24,9 +24,9 @@
 // }
 
 import { checkUrl } from "./src/tools/checkUrl";
-import { Request, requests } from "./src/tools/requests"
+import { UrlRequest, requests } from "./src/urlRequestClasses/urlRequest";
 
-const checkUrls = async (requests: Request[]) : Promise<void> => {
+const checkUrls = async (requests: UrlRequest[]) : Promise<void> => {
     await Promise.all(
         requests.map(async (request): Promise<void> => {
             await checkUrl(request);
